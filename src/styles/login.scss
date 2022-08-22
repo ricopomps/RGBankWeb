@@ -12,6 +12,7 @@
     margin-right: auto;
   }
   .paper {
+    border-radius: 1.5rem;
     display: grid;
     width: 60%;
     padding: 2rem;
@@ -23,5 +24,8 @@
   .container {
     display: flex;
     justify-content: center;
+    .spacer {
+      justify-content: space-between;
+    }
   }
 }

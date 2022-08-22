@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { Button, Paper, Typography, TextField } from "@mui/material";
+import { Button, Paper, Typography, TextField, Link } from "@mui/material";
 
-import { User, login } from "../api/loginApi";
+import { LoginUser, login } from "../api/loginApi";
 
 import "../styles/login.scss";
 
 export function Login() {
-  const [user, setUser] = useState<User>({ cpf: "", password: "" });
+  const [user, setUser] = useState<LoginUser>({ cpf: "", password: "" });
   const handleSubmit = () => {
     login(user);
   };
@@ -32,8 +32,14 @@ export function Login() {
               type="password"
               label="Password"
             />
-            <Button onClick={() => handleSubmit()}>Login</Button>
-            <Button onClick={() => handleSubmit()}>Register</Button>
+            <div className="container spacer">
+              <Link href="/register">
+                <Button onClick={() => handleSubmit()}>Register</Button>
+              </Link>
+              <Button className="loginButton" onClick={() => handleSubmit()}>
+                Login
+              </Button>
+            </div>
           </Paper>
         </div>
       </div>
