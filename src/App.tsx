@@ -1,11 +1,13 @@
 // import { AppBar } from "./components/AppBar";
 import { AppRoutes } from "./routes";
-// import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./styles/global.scss";
 
 function App() {
   return (
     <>
+      <ToastContainer />
       {/* <AppBar /> */}
       <AppRoutes />
     </>

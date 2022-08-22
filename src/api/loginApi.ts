@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export type LoginUser = {
   cpf: string;
@@ -23,15 +24,22 @@ const {
 } = import.meta.env;
 
 export async function login(user: LoginUser) {
-  const response = await axios.post(`${baseUrl}${usersUrl}${loginUrl}`, user);
-  console.log(response);
+  try {
+    const response = await axios.post(`${baseUrl}${usersUrl}${loginUrl}`, user);
+    toast.success("Sucess");
+  } catch (error: any) {
+    toast.error("Error - " + error.message);
+  }
 }
 
 export async function register(user: RegisterUser) {
-  console.log(user);
-  const response = await axios.post(
-    `${baseUrl}${usersUrl}${registerUrl}`,
-    user
-  );
-  console.log(response);
+  try {
+    const response = await axios.post(
+      `${baseUrl}${usersUrl}${registerUrl}`,
+      user
+    );
+    toast.success("Sucess");
+  } catch (error: any) {
+    toast.error("Error - " + error.message);
+  }
 }
