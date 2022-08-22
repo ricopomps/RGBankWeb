@@ -41,6 +41,7 @@ export function Register() {
               label="Last name"
             />
             <TextField
+              InputLabelProps={{ shrink: true }}
               onChange={(e) => handleChangeDate(e.target.value, "birthDate")}
               type="date"
               label="Birth date"
