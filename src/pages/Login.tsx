@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { Button, Paper, Typography, TextField } from "@mui/material";
 
+import { User, login } from "../api/loginApi";
+
 import "../styles/login.scss";
+
 export function Login() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState<User>({ cpf: "", password: "" });
   const handleSubmit = () => {
-    console.log(user);
+    login(user);
   };
   return (
     <div className="loginContainer">
@@ -30,6 +33,7 @@ export function Login() {
               label="Password"
             />
             <Button onClick={() => handleSubmit()}>Login</Button>
+            <Button onClick={() => handleSubmit()}>Register</Button>
           </Paper>
         </div>
       </div>
