@@ -1,0 +1,27 @@
+.loginContainer {
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  .group {
+    width: fit-content;
+    min-width: 1000px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .paper {
+    display: grid;
+    width: 60%;
+    padding: 2rem;
+    gap: 2rem;
+    background-color: grey;
+    margin-bottom: 3rem;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+}
