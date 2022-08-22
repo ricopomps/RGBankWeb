@@ -27,8 +27,10 @@ export async function login(user: LoginUser) {
   try {
     const response = await axios.post(`${baseUrl}${usersUrl}${loginUrl}`, user);
     toast.success("Sucess");
+    return true;
   } catch (error: any) {
     toast.error("Error - " + error.message);
+    return false;
   }
 }
 
@@ -39,7 +41,9 @@ export async function register(user: RegisterUser) {
       user
     );
     toast.success("Sucess");
+    return true;
   } catch (error: any) {
     toast.error("Error - " + error.message);
+    return false;
   }
 }

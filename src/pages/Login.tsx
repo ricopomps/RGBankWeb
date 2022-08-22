@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Paper, Typography, TextField, Link } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 import { LoginUser, login } from "../api/loginApi";
 
@@ -7,9 +8,12 @@ import "../styles/login.scss";
 
 export function Login() {
   const [user, setUser] = useState<LoginUser>({ cpf: "", password: "" });
-  const handleSubmit = () => {
-    login(user);
+  const navigate = useNavigate();
+
+  const handleSubmit = async () => {
+    if (await login(user)) navigate("/list");
   };
+
   return (
     <div className="loginContainer">
       <div className="group">

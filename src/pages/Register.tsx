@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Paper, Typography, TextField, Link } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 import { RegisterUser, register } from "../api/loginApi";
 
@@ -7,18 +8,24 @@ import "../styles/login.scss";
 
 export function Register() {
   const [user, setUser] = useState<RegisterUser>({});
-  const handleSubmit = () => {
-    register(user);
+  const navigate = useNavigate();
+
+  const handleSubmit = async () => {
+    if (await register(user)) navigate("/list");
   };
+
   const handleChange = (value: string, key: string) => {
     setUser({ ...user, [key]: value });
   };
+
   const handleChangeNumber = (value: string, key: string) => {
     setUser({ ...user, [key]: +value });
   };
+
   const handleChangeDate = (value: string, key: string) => {
     setUser({ ...user, [key]: new Date(value) });
   };
+
   return (
     <div className="loginContainer">
       <div className="group">
