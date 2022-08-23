@@ -11,7 +11,7 @@ export function Register() {
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
-    if (await register(user)) navigate("/list");
+    if (await register(user)) navigate("/");
   };
 
   const handleChange = (value: string, key: string) => {

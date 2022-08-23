@@ -10,6 +10,7 @@ type UserBoxProps = {
 };
 export function UserList() {
   const [users, setUsers] = useState<RegisterUser[]>([]);
+  const user: RegisterUser = JSON.parse(localStorage.getItem("user") || "");
   useEffect(() => {
     const fetchData = async () => {
       const response = await list();
@@ -33,9 +34,14 @@ export function UserList() {
       <div className="group">
         <Paper className="paper">
           <Typography className="main">RGBank</Typography>
+          {user && (
+            <Typography className="main">
+              {user.name} {user.lastName}
+            </Typography>
+          )}
         </Paper>
         {users.map((user) => (
-          <UserBox user={user} />
+          <UserBox key={user.cpf} user={user} />
         ))}
       </div>
     </div>
