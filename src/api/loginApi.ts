@@ -27,9 +27,7 @@ export async function login(user: LoginUser) {
   try {
     const response = await axios.post(`${baseUrl}${usersUrl}${loginUrl}`, user);
     toast.success("Sucess");
-    localStorage.setItem("token", response.data.data.accessToken);
-    localStorage.setItem("user", JSON.stringify(response.data.data.secureUser));
-    return true;
+    return response.data.data.secureUser as RegisterUser;
   } catch (error: any) {
     toast.error("Error - " + error.message);
     return false;

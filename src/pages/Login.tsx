@@ -1,21 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Button, Paper, Typography, TextField, Link } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 import { LoginUser, login } from "../api/loginApi";
+import { UserContext, UserContextType } from "../context/UserContext";
 
 import "../styles/login.scss";
 
 export function Login() {
   useEffect(() => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    removeUser();
   }, []);
+  const { saveUser, removeUser } = useContext(UserContext) as UserContextType;
+
   const [user, setUser] = useState<LoginUser>({ cpf: "", password: "" });
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
-    if (await login(user)) navigate("/list");
+    const logged = await login(user);
+    if (logged) {
+      saveUser(logged);
+      navigate("/list");
+    }
   };
 
   return (
