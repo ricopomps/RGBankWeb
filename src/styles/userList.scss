@@ -24,4 +24,11 @@
       padding: 3rem;
     }
   }
+  .container {
+    display: flex;
+    justify-content: center;
+    .spacer {
+      justify-content: space-between;
+    }
+  }
 }
