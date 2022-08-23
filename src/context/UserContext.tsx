@@ -12,7 +12,13 @@ export const UserContext = React.createContext<UserContextType | null>(null);
 const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = React.useState<RegisterUser>({});
 
+  React.useEffect(() => {
+    const existingUser = sessionStorage.getItem("user");
+    if (existingUser) setUser(JSON.parse(existingUser));
+  }, []);
+
   const saveUser = (user: RegisterUser) => {
+    sessionStorage.setItem("user", JSON.stringify(user));
     setUser(user);
   };
 
