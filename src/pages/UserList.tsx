@@ -5,6 +5,9 @@ import { RegisterUser } from "../api/loginApi";
 
 import "../styles/userList.scss";
 
+type UserBoxProps = {
+  user: RegisterUser;
+};
 export function UserList() {
   const [users, setUsers] = useState<RegisterUser[]>([]);
   useEffect(() => {
@@ -15,18 +18,25 @@ export function UserList() {
     fetchData();
   }, []);
 
+  const UserBox = ({ user }: UserBoxProps) => {
+    return (
+      <Paper className="paper">
+        <Typography>
+          {user.name} {user.lastName}
+        </Typography>
+      </Paper>
+    );
+  };
+
   return (
     <div className="userListContainer">
       <div className="group">
-        <div className="container">
-          <Paper className="paper">
-            <Typography>RGBank</Typography>
-            {users[0] && <Typography>{users[0].name}</Typography>}
-            {users.map((user) => (
-              <Typography key={user.cpf}>{user.name}</Typography>
-            ))}
-          </Paper>
-        </div>
+        <Paper className="paper">
+          <Typography className="main">RGBank</Typography>
+        </Paper>
+        {users.map((user) => (
+          <UserBox user={user} />
+        ))}
       </div>
     </div>
   );

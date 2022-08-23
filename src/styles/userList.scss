@@ -11,6 +11,7 @@
     margin-left: auto;
     margin-right: auto;
   }
+
   .paper {
     border-radius: 1.5rem;
     display: grid;
@@ -19,13 +20,8 @@
     gap: 2rem;
     background-color: grey;
     margin-bottom: 3rem;
-  }
-
-  .container {
-    display: flex;
-    justify-content: center;
-    .spacer {
-      justify-content: space-between;
+    .main {
+      padding: 3rem;
     }
   }
 }
