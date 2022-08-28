@@ -23,6 +23,7 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const removeUser = () => {
+    sessionStorage.removeItem("user");
     setUser({});
   };
 

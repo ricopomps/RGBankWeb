@@ -45,7 +45,7 @@ export function AppBar(props: AppBarProps) {
           edge="start"
           aria-label="logo"
           onClick={() => {
-            navigate("/");
+            navigate("/login");
             removeUser();
           }}
         >

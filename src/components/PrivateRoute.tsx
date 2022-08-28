@@ -12,6 +12,6 @@ export function PrivateRoute({ children }: PrivateRouteProps) {
   return Object.keys(user).length || storedUser ? (
     children
   ) : (
-    <Navigate to="/" />
+    <Navigate to="/login" />
   );
 }

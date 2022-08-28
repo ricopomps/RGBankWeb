@@ -20,7 +20,7 @@ export function Login() {
     const logged = await login(user);
     if (logged) {
       saveUser(logged);
-      navigate("/list");
+      navigate("/");
     }
   };
 
