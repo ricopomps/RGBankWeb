@@ -14,6 +14,7 @@ export type RegisterUser = {
   phone?: number;
   cpf?: string;
   password?: string;
+  balance?: number;
 };
 
 const {
