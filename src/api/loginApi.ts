@@ -28,7 +28,7 @@ export async function login(user: LoginUser) {
   try {
     const response = await axios.post(`${baseUrl}${usersUrl}${loginUrl}`, user);
     toast.success("Sucess");
-    return response.data.data.secureUser as RegisterUser;
+    return response.data.secureUser as RegisterUser;
   } catch (error: any) {
     toast.error("Error - " + error.message);
     return false;
