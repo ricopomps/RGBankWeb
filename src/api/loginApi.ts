@@ -15,6 +15,7 @@ export type RegisterUser = {
   cpf?: string;
   password?: string;
   balance?: number;
+  accountCode?: number;
 };
 
 const {

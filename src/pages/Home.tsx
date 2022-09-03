@@ -13,13 +13,18 @@ export function Home() {
   ) as UserContextType;
 
   // const [user, setUser] = useState<RegisterUser>({ balance: 420 });
-  const data = [{ data: "data1" }, { data: "data2" }, { data: "data3" }];
+  const data = [{ data: "Transfer" }, { data: "Deposit" }, { data: "Pix" }];
 
   return (
     <div className="homeContainer">
       <div className="group">
         <div className="container">
           <Paper className="paper">
+            <div className="container">
+              <Typography fontSize={36}>
+                Account code: {user?.accountCode}
+              </Typography>
+            </div>
             <div className="container">
               <Typography fontSize={36}>Balance</Typography>
             </div>
