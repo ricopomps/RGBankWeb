@@ -38,6 +38,7 @@ export function Home() {
         <div className="container">
           <List data={data} />
         </div>
+        <Link href="/accountcreation">create account</Link>
       </div>
     </div>
   );

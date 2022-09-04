@@ -7,6 +7,7 @@ export type LoginUser = {
 };
 
 export type RegisterUser = {
+  id?: string;
   name?: string;
   lastName?: string;
   birthDate?: Date;

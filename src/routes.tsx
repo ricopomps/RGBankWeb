@@ -5,6 +5,7 @@ import { Login } from "./pages/Login";
 import { AppBar } from "./components/AppBar";
 import { Register } from "./pages/Register";
 import { UserList } from "./pages/UserList";
+import { AccountCreation } from "./pages/AccountCreation";
 export function AppRoutes() {
   return (
     <Router>
@@ -25,6 +26,14 @@ export function AppRoutes() {
           element={
             <PrivateRoute>
               <UserList />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/accountcreation"
+          element={
+            <PrivateRoute>
+              <AccountCreation />
             </PrivateRoute>
           }
         />
