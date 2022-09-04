@@ -3,7 +3,7 @@ import { RegisterUser } from "../api/loginApi";
 
 export type UserContextType = {
   user: RegisterUser;
-  saveUser: (user: RegisterUser) => void;
+  saveUser: (user: RegisterUser, token: string) => void;
   removeUser: () => void;
 };
 
@@ -17,13 +17,15 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
     if (existingUser) setUser(JSON.parse(existingUser));
   }, []);
 
-  const saveUser = (user: RegisterUser) => {
+  const saveUser = (user: RegisterUser, token: string) => {
     sessionStorage.setItem("user", JSON.stringify(user));
+    sessionStorage.setItem("token", token);
     setUser(user);
   };
 
   const removeUser = () => {
     sessionStorage.removeItem("user");
+    sessionStorage.removeItem("token");
     setUser({});
   };
 

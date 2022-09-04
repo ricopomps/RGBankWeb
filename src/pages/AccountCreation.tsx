@@ -20,7 +20,6 @@ export function AccountCreation() {
   const { user } = useContext(UserContext) as UserContextType;
   console.log("USEER", user);
   const [account, setAccount] = useState<Account>({
-    user: user.id || "",
     type: "",
   });
   console.log("account", account);
@@ -48,9 +47,7 @@ export function AccountCreation() {
           <Paper className="paper">
             <TextField
               type="password"
-              onChange={(e) =>
-                setAccount({ user: user.id || "", type: e.target.value })
-              }
+              onChange={(e) => setAccount({ type: e.target.value })}
               label="Choose what kind of account to create"
               select
             >

@@ -26,11 +26,16 @@ const {
   VITE_API_PATH_REGISTER: registerUrl,
 } = import.meta.env;
 
-export async function login(user: LoginUser) {
+export async function login(inputUser: LoginUser) {
   try {
-    const response = await axios.post(`${baseUrl}${usersUrl}${loginUrl}`, user);
+    const response = await axios.post(
+      `${baseUrl}${usersUrl}${loginUrl}`,
+      inputUser
+    );
     toast.success("Sucess");
-    return response.data.secureUser as RegisterUser;
+    const user = response.data.secureUser as RegisterUser;
+    const token = response.data.accessToken as string;
+    return { user, token };
   } catch (error: any) {
     toast.error("Error - " + error.message);
     return false;

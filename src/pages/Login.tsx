@@ -19,7 +19,7 @@ export function Login() {
   const handleSubmit = async () => {
     const logged = await login(user);
     if (logged) {
-      saveUser(logged);
+      saveUser(logged.user, logged.token);
       navigate("/");
     }
   };
