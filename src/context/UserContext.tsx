@@ -2,7 +2,7 @@ import * as React from "react";
 import { RegisterUser } from "../api/loginApi";
 
 export type UserContextType = {
-  user: RegisterUser;
+  user?: RegisterUser;
   saveUser: (user: RegisterUser, token: string) => void;
   removeUser: () => void;
 };
@@ -10,7 +10,9 @@ export type UserContextType = {
 export const UserContext = React.createContext<UserContextType | null>(null);
 
 const UserProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = React.useState<RegisterUser>({});
+  const [user, setUser] = React.useState<RegisterUser>(
+    JSON.parse(sessionStorage.getItem("user") || "{}") as RegisterUser
+  );
 
   React.useEffect(() => {
     const existingUser = sessionStorage.getItem("user");
@@ -30,7 +32,13 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, saveUser, removeUser }}>
+    <UserContext.Provider
+      value={{
+        user,
+        saveUser,
+        removeUser,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

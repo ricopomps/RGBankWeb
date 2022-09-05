@@ -14,7 +14,7 @@ export function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user.balance === undefined) navigate("/accountcreation");
+    if (user?.balance === undefined) navigate("/accountcreation");
   }, []);
   const data = [{ data: "Transfer" }, { data: "Deposit" }, { data: "Pix" }];
 

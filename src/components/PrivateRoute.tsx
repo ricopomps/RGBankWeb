@@ -8,10 +8,5 @@ type PrivateRouteProps = {
 };
 export function PrivateRoute({ children }: PrivateRouteProps) {
   const { user } = useContext(UserContext) as UserContextType;
-  const storedUser = sessionStorage.getItem("user");
-  return Object.keys(user).length || storedUser ? (
-    children
-  ) : (
-    <Navigate to="/login" />
-  );
+  return user && Object.keys(user).length ? children : <Navigate to="/login" />;
 }
