@@ -9,7 +9,6 @@ type PrivateRouteProps = {
 export function PrivateRoute({ children }: PrivateRouteProps) {
   const { user } = useContext(UserContext) as UserContextType;
   const storedUser = sessionStorage.getItem("user");
-  console.log("verifying...", user, storedUser);
   return Object.keys(user).length || storedUser ? (
     children
   ) : (

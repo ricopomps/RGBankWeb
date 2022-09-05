@@ -18,11 +18,9 @@ import { UserContext, UserContextType } from "../context/UserContext";
 export function AccountCreation() {
   const navigate = useNavigate();
   const { user } = useContext(UserContext) as UserContextType;
-  console.log("USEER", user);
   const [account, setAccount] = useState<Account>({
     type: "",
   });
-  console.log("account", account);
 
   const accountTypes = ["checking account", "savings account"];
 
