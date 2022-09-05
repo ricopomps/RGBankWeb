@@ -24,11 +24,14 @@ export function List(item: ListProps) {
     <div className="listContainer">
       <div className="container">
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-          {treatedData.map((it) => (
-            <div>
-              {it.map((it2) => (
-                <Grid item xs={12} md={12} xl={6}>
-                  <ListItem data={it2.data} link={it2?.link} />
+          {treatedData.map((parentData) => (
+            <div key={parentData[0].data}>
+              {parentData.map((childrenData) => (
+                <Grid key={childrenData.data} item xs={12} md={12} xl={6}>
+                  <ListItem
+                    data={childrenData.data}
+                    link={childrenData?.link}
+                  />
                 </Grid>
               ))}
             </div>
