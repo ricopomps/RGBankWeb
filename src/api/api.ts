@@ -4,7 +4,6 @@ const { VITE_API_PATH: baseUrl } = import.meta.env;
 
 export function getApi() {
   const token = sessionStorage.getItem("token");
-
   const api = axios.create({ baseURL: baseUrl });
 
   if (token) {

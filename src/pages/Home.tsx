@@ -1,7 +1,7 @@
-import { useEffect, useState, useContext } from "react";
-import { Button, Paper, Typography, TextField, Link } from "@mui/material";
+import { useEffect, useContext } from "react";
+import { Paper, Typography, Link } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-import { RegisterUser, login } from "../api/loginApi";
 import { currencyFormat } from "../api/accountApi";
 import { UserContext, UserContextType } from "../context/UserContext";
 import { List } from "../context/List";
@@ -11,8 +11,11 @@ export function Home() {
   const { user, saveUser, removeUser } = useContext(
     UserContext
   ) as UserContextType;
+  const navigate = useNavigate();
 
-  // const [user, setUser] = useState<RegisterUser>({ balance: 420 });
+  useEffect(() => {
+    if (!user.balance) navigate("/accountcreation");
+  }, []);
   const data = [{ data: "Transfer" }, { data: "Deposit" }, { data: "Pix" }];
 
   return (
@@ -38,7 +41,6 @@ export function Home() {
         <div className="container">
           <List data={data} />
         </div>
-        <Link href="/accountcreation">create account</Link>
       </div>
     </div>
   );

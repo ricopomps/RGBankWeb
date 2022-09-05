@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-import { api } from "./api";
+import { getApi } from "./api";
 
 const {
   VITE_API_PATH_ACCOUNTS: accountsUrl,
@@ -16,6 +16,7 @@ export function currencyFormat(num: number) {
 
 export async function createAccount(account: Account) {
   try {
+    const api = getApi();
     const response = await api.post(`${accountsUrl}${createUrl}`, account);
     toast.success("Account created");
     return true;
